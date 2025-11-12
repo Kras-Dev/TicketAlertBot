@@ -9,9 +9,11 @@ wheels/
 # Virtual environments
 .venv
 
+.env
+
 date.txt
-name for your bot: TicketAlertBot
-username for your bot: chitateli_alert_bot
-t.me/chitateli_alert_bot.
-Use this token to access the HTTP API:
-8064023147:AAHdKdUIHo8nCI0K-bm7tZlsivZLhQexwyo 
+subscribers.txt
+offset.txt
+
+
+

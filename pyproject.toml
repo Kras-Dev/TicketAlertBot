@@ -1,12 +1,19 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
 [project]
-name = "parse-telegram"
+name = "TicketAlertBot"
 version = "0.1.0"
-description = "Add your description here"
+description = "chitateli ticket finder"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
     "aiogram>=3.22.0",
     "beautifulsoup4>=4.14.2",
+    "python-dotenv>=1.2.1",
     "requests>=2.32.5",
     "selenium>=4.38.0",
 ]
+[project.scripts]
+TicketAlertBot = "package.module:main"
