@@ -1,22 +1,25 @@
 import os
+import json
 
-def read_saved_date(filepath):
+def read_status(filepath):
     """
-    Читает дату из файла по указанному пути.
-    Если файл отсутствует, возвращает None.
+    Читает дату и флаг из JSON файла.
+    Если файл отсутствует или некорректен, возвращает None.
     """
     if os.path.exists(filepath):
-        with open(filepath, "r", encoding="utf-8") as f:
-            return f.read().strip()
+        try:
+            with open(filepath, "r", encoding="utf-8") as f:
+                return json.load(f)
+        except json.JSONDecodeError:
+            return None
     return None
 
-def save_date(filepath, date):
+def save_status(filepath, date, flag):
     """
-    Сохраняет дату в файл по указанному пути.
-    Перезаписывает файл.
+    Сохраняет дату и флаг (наличие билетов) в JSON файл.
     """
     with open(filepath, "w", encoding="utf-8") as f:
-        f.write(date)
+        json.dump({"date": date, "status": flag}, f, ensure_ascii=False)
 
 def add_subscriber(filepath, chat_id):
     """
@@ -61,3 +64,19 @@ def load_last_update_id(filepath):
             return int(f.read())
     except (FileNotFoundError, ValueError):
         return None
+
+def add_info_request(filepath, chat_id):
+    with open(filepath, "a", encoding="utf-8") as f:
+        f.write(chat_id + "\n")
+
+def get_info_requests(filepath):
+    try:
+        with open(filepath, "r", encoding="utf-8") as f:
+            return [line.strip() for line in f.readlines()]
+    except FileNotFoundError:
+        return []
+
+def clear_info_requests(filepath):
+    with open(filepath, "w", encoding="utf-8") as f:
+        pass  # очищаем файл
+

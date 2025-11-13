@@ -11,9 +11,13 @@ wheels/
 
 .env
 
-date.txt
-subscribers.txt
+
+app.log
 offset.txt
+subscribers.txt
+info_requests.txt
+date.json
 
-
-
+name for your bot: TicketAlertBot
+username for your bot: chitateli_alert_bot
+t.me/chitateli_alert_bot.
