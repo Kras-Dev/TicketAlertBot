@@ -32,6 +32,8 @@ build/
 .coverage
 htmlcov/
 
+
+/src/config/files/
 app.log
 offset.txt
 subscribers.txt
