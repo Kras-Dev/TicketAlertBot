@@ -53,7 +53,7 @@ async def main():
     subscribers = get_subscribers(SUBSCRIBERS_FILE)
     info_requests = get_info_requests(REQUESTS_FILE)
 
-    driver = SeleniumDriver(headless=False)
+    driver = SeleniumDriver(headless=True)
     try:
         html = fetch_page(URL)
         new_date = parse_date(html)
