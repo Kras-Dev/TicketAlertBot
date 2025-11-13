@@ -1,10 +1,10 @@
 from aiogram import Router
 from aiogram.filters import CommandStart, Command
-from aiogram.types import Message, BotCommand
+from aiogram.types import Message
 import logging
 
 from config.config import SUBSCRIBERS_FILE, REQUESTS_FILE
-from utils.files_utils import add_subscriber, get_subscribers, get_info_requests, add_info_request, clear_info_requests
+from utils.files_utils import add_subscriber, get_subscribers, get_info_requests, add_info_request
 from utils.telegram_utils import send_telegram_message
 
 router = Router()

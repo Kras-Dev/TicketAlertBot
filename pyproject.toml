@@ -16,5 +16,11 @@ dependencies = [
     "requests>=2.32.5",
     "selenium>=4.38.0",
 ]
+
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["ticketalertbot", "config", "handlers", "utils"]
+
 [project.scripts]
-TicketAlertBot = "package.module:main"
+TicketAlertBot = "ticketalertbot.main:run"

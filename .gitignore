@@ -1,16 +1,36 @@
-# Python-generated files
+# IDE и редакторы
+.idea/
+.vscode/
 __pycache__/
-*.py[oc]
-build/
-dist/
-wheels/
-*.egg-info
+*.py[cod]
+*.pyo
+*.pyd
 
-# Virtual environments
-.venv
+# Виртуальное окружение
+.venv/
+venv/
+env/
 
+# Логи
+*.log
+
+# Файлы конфигурации окружения
 .env
 
+# Файлы сборки и распределения
+dist/
+build/
+*.egg-info/
+
+# Кэш и временные файлы
+*.DS_Store
+*.swp
+*.swo
+*.bak
+
+# Файлы тестов и покрытий (если генерируются)
+.coverage
+htmlcov/
 
 app.log
 offset.txt
@@ -18,6 +38,3 @@ subscribers.txt
 info_requests.txt
 date.json
 
-name for your bot: TicketAlertBot
-username for your bot: chitateli_alert_bot
-t.me/chitateli_alert_bot.

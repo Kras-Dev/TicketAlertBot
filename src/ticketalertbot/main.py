@@ -25,7 +25,7 @@ if BOT_TOKEN is None:
 logging.basicConfig(
     level=logging.INFO,
     format='%(asctime)s %(name)s %(levelname)s: %(message)s',
-    filename='app.log',
+    filename='../../app.log',
     filemode='a',
 )
 
@@ -100,6 +100,8 @@ async def main():
     finally:
         driver.quit()
 
+def run():
+    asyncio.run(main())
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    run()
