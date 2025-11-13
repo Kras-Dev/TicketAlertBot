@@ -46,3 +46,15 @@ async def notify_info_requesters(info_requests, message, bot_token):
     for chat_id in info_requests:
         await send_telegram_message(bot_token, chat_id, message)
     clear_info_requests(REQUESTS_FILE)
+
+async def notify_based_on_status(tickets_available, new_date, subscribers, info_requests, bot_token):
+    if tickets_available == "timeout":
+        logging.info("Timeout occured while checking tickets - возможна временная ошибка, попробуйте позже")
+        await notify_subscribers(subscribers, "Timeout occured", bot_token)
+        if info_requests:
+            await notify_info_requesters(info_requests, "Timeout occured", bot_token)
+    elif tickets_available:
+        await notify_subscribers(subscribers, f"Билеты доступны на {new_date}", bot_token)
+    else:
+        if info_requests:
+            await notify_info_requesters(info_requests, f"Билетов на {new_date} нет.", bot_token)

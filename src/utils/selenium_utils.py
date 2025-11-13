@@ -18,7 +18,14 @@ class SeleniumDriver:
         """
         options = webdriver.ChromeOptions()
         if headless:
-            options.add_argument("--headless")
+            options.add_argument("--headless=new")
+            options.add_argument("--no-sandbox")
+            options.add_argument("--disable-dev-shm-usage")
+            options.add_argument("--disable-gpu")
+            options.add_argument("--window-size=1920,1080")
+            options.add_argument(
+                '--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 '
+                '(KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36')
         self.driver = webdriver.Chrome(options=options)
 
     def get_dynamic_html(self, url, timeout=30):
@@ -70,9 +77,10 @@ class SeleniumDriver:
             else:
                 return True
         except TimeoutException:
+            self.driver.save_screenshot("src/config/files/screenshot.png")
             # Если сообщение об ошибке не появилось за timeout — считаем, что билеты могут быть
             logger.info("Сообщение об ошибке не обнаружено, могут быть доступны билеты")
-            return True
+            return "timeout"
 
     def quit(self):
         """
